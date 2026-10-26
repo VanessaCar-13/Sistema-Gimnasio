@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestión de Gimnasio - SGG</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f49; }
+        h1, h2 { color: #333; }
+        form { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { display: block; margin-bottom: 10px; padding: 8px; width: 100%; max-width: 400px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Gestión para un Gimnasio (SGG)</h1>
+    
+    <!-- Formulario PN-04 -->
+    <h2>Registrar Nuevo Usuario</h2>
+    <form action="/registrar" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre completo *" required>
+        <input type="text" name="telefono" placeholder="Teléfono (10 dígitos) *" required>
+        <input type="number" name="edad" placeholder="Edad *" required>
+        <input type="text" name="contacto" placeholder="Datos de contacto / Correo *" required>
+        <button type="submit">Guardar Usuario</button>
+    </form>
+
+    <!-- Listado PN-03 -->
+    <h2>Usuarios Registrados</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Teléfono</th>
+            <th>Edad</th>
+            <th>Contacto</th>
+            <th>Estado</th>
+        </tr>
+        {% for u in usuarios %}
+        <tr>
+            <td>{{ u[0] }}</td>
+            <td>{{ u[1] }}</td>
+            <td>{{ u[2] }}</td>
+            <td>{{ u[3] }}</td>
+            <td>{{ u[4] }}</td>
+            <td>{{ u[5] }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">No se encontraron registros.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
